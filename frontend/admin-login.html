@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StationHub Admin</title>
+
+    <link rel="stylesheet" href="./css/admin-login.css">
+
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <header>
+
+        <h1>STATIONHUB</h1>
+
+        <span>ADMIN CONTROL PANEL</span>
+
+    </header>
+
+    <main class="container">
+
+
+        <section class="card" id="loginSection">
+
+            <h2>
+                <i class="fa-solid fa-user-shield"></i>
+                Staff Login
+            </h2>
+
+            <input
+                type="email"
+                id="email"
+                placeholder="admin@stationhub.com">
+
+            <input
+                type="password"
+                id="password"
+                placeholder="Password">
+
+            <button onclick="login()">
+
+                Sign In
+
+            </button>
+
+            <p id="loginMsg"></p>
+
+        </section>
+
+
+        <section class="card" id="postSection" style="display:none">
+
+            <h2>
+
+                <i class="fa-solid fa-bullhorn"></i>
+
+                Send Announcement
+
+            </h2>
+
+            <select id="stationSelect">
+
+                <option value="">
+                    Select Station...
+                </option>
+
+                <option>Ramses</option>
+                <option>Sadat</option>
+                <option>Attaba</option>
+                <option>Helwan</option>
+                <option>Dokki</option>
+                <option>Giza</option>
+
+            </select>
+
+            <select id="priority">
+
+                <option value="info">
+
+                    Information
+
+                </option>
+
+                <option value="warning">
+
+                    Warning
+
+                </option>
+
+                <option value="alert">
+
+                    Alert
+
+                </option>
+
+            </select>
+
+            <textarea
+                id="message"
+                rows="5"
+                placeholder="Write your announcement..."></textarea>
+
+            <button onclick="postUpdate()">
+
+                Send Announcement
+
+            </button>
+
+            <p id="postMsg"></p>
+
+        </section>
+
+    </main>
+
+    <script src="./js/admin.js"></script>
+
+</body>
+</html>

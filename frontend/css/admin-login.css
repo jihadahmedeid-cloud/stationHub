@@ -1,0 +1,120 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+:root{
+    --PrimaryDark:#0B1120;
+    --Card:#111827;
+    --Border:#1E293B;
+    --Primary:#3B82F6;
+    --Text:#F8FAFC;
+    --Gray:#94A3B8;
+    --Green:#22C55E;
+    --Yellow:#FACC15;
+    --Red:#EF4444;
+}
+
+body{
+   min-height:100vh;
+   background-color: var(--PrimaryDark);
+   color: var(--Text);
+   font-family:"Share Tech Mono", monospace;
+}
+
+header{
+    display: flex;
+    align-items: center;
+    padding: 1rem 2rem;
+    gap: 1rem;
+    border-bottom: 1px solid var(--Border);
+}
+
+header h1{
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--Primary);
+    font-family: "Orbitron", sans-serif;
+}
+
+header span{
+    font-size: 0.8rem; color: #475569;
+}
+
+.container { 
+    max-width: 560px; 
+    margin: 2rem auto; 
+    padding: 0 1rem; 
+}
+
+.card{
+    background:var(--Card);
+    border:1px solid var(--Border);
+    border-radius:15px;
+    padding:30px;
+    box-shadow:0 0 15px rgba(59,130,246,.08);
+}
+
+.card h2{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+    font-family:"Orbitron",sans-serif;
+    color:var(--Primary);
+    margin-bottom:30px;
+}
+
+.fa-solid{
+    color: var(--Primary);
+    margin-right: 20px;
+}
+
+
+input, select, textarea { 
+    width: 100%; 
+    padding: 0.65rem 0.9rem; 
+    background: #0a0a0f; 
+    border: 1px solid #1e293b; 
+    border-radius: 6px; 
+    color: #e2e8f0; 
+    font-size: 0.9rem; 
+    margin-bottom: 0.75rem;  
+    transition:.3s;
+}
+
+input:focus,
+select:focus,
+textarea:focus{
+    border-color:var(--Primary);
+    box-shadow:0 0 10px rgba(59,130,246,.3);
+}
+
+button{
+    width:100%;
+    height:50px;
+    border:none;
+    border-radius:40px;
+    background:var(--Yellow);
+    color:var(--PrimaryDark);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    cursor:pointer;
+    transition:.3s;
+    font-family:"Share Tech Mono", monospace;
+    font-weight:bold;
+}
+
+button:hover{
+    background:var(--Primary);
+    transform:translateY(-2px);
+    color:white;
+}
+
+#loginMsg,
+#postMsg{
+    margin-top:15px;
+    text-align:center;
+    color:var(--Green);
+}

@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StationHub</title>
+
+
+    <link rel="stylesheet" href="./css/home.css">
+
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+
+    <nav class="navbar">
+
+        <div class="brand">
+
+            <img src="./assets/images/StationHub Logo.png"
+                 alt="StationHub Logo"
+                 class="logo">
+
+            <div class="brand-text">
+                <h1>STATIONHUB</h1>
+                <span>LIVE STATION BOARD</span>
+            </div>
+
+        </div>
+
+        <div class="nav-right">
+
+            <a href="admin-login.html" class="nav-link">
+                <i class="fa-solid fa-user-shield"></i>
+                Admin
+            </a>
+
+            <div class="live-badge">
+
+                <span class="live-dot"></span>
+
+                LIVE
+
+            </div>
+
+        </div>
+
+    </nav>
+
+    <main class="container">
+
+        <aside class="sidebar">
+
+            <h2>Station Channels</h2>
+
+            <p class="sidebar-description">
+                Select a station to receive live announcements.
+            </p>
+
+
+            <div class="search-box">
+
+                <i class="fa-solid fa-magnifying-glass"></i>
+
+                <input
+                    type="text"
+                    id="search"
+                    placeholder="Search station...">
+
+            </div>
+
+            <div class="stations-list">
+
+                <button class="station active"
+                        data-station="ramses">
+
+                    <span class="status online"></span>
+
+                    <i class="fa-solid fa-train-subway"></i>
+
+                    <span>Ramses</span>
+
+                </button>
+
+                <button class="station"
+                        data-station="sadat">
+
+                    <span class="status online"></span>
+
+                    <i class="fa-solid fa-train-subway"></i>
+
+                    <span>Sadat</span>
+
+                </button>
+
+                <button class="station"
+                        data-station="attaba">
+
+                    <span class="status warning"></span>
+
+                    <i class="fa-solid fa-train-subway"></i>
+
+                    <span>Attaba</span>
+
+                </button>
+
+                <button class="station"
+                        data-station="helwan">
+
+                    <span class="status offline"></span>
+
+                    <i class="fa-solid fa-train-subway"></i>
+
+                    <span>Helwan</span>
+
+                </button>
+
+                <button class="station"
+                        data-station="giza">
+
+                    <span class="status online"></span>
+
+                    <i class="fa-solid fa-train-subway"></i>
+
+                    <span>Giza</span>
+
+                </button>
+
+                <button class="station"
+                        data-station="dokki">
+
+                    <span class="status online"></span>
+
+                    <i class="fa-solid fa-train-subway"></i>
+
+                    <span>Dokki</span>
+
+                </button>
+
+            </div>
+
+        </aside>
+
+        <section class="chat">
+
+            <div class="chat-header">
+
+                <div>
+
+                    <h2 id="station-name">
+                        Ramses Station
+                    </h2>
+
+                    <small>
+                        Live Announcements
+                    </small>
+
+                </div>
+
+                <div class="viewer">
+
+                    <i class="fa-solid fa-users"></i>
+
+                    <span id="viewer-count">
+
+                        0
+
+                    </span>
+
+                    Online
+
+                </div>
+
+            </div>
+
+            <div class="chat-date">
+
+                <i class="fa-regular fa-clock"></i>
+
+                <span id="current-date">
+
+                    03 Aug 2026
+
+                </span>
+
+            </div>
+
+            <div id="messages">
+
+                <div class="message">
+
+                    <div class="message-info">
+
+                        <span class="time">
+
+                            10:20 AM
+
+                        </span>
+
+                        <span class="tag info">
+
+                            INFO
+
+                        </span>
+
+                    </div>
+
+                    <p>
+
+                        Train delayed for 5 minutes.
+
+                    </p>
+
+                </div>
+
+                <div class="message">
+
+                    <div class="message-info">
+
+                        <span class="time">
+
+                            10:45 AM
+
+                        </span>
+
+                        <span class="tag warning">
+
+                            WARNING
+
+                        </span>
+
+                    </div>
+
+                    <p>
+
+                        Platform 2 is temporarily closed.
+
+                    </p>
+
+                </div>
+
+                <div class="message">
+
+                    <div class="message-info">
+
+                        <span class="time">
+
+                            11:10 AM
+
+                        </span>
+
+                        <span class="tag success">
+
+                            UPDATE
+
+                        </span>
+
+                    </div>
+
+                    <p>
+
+                        Next train arrives in 3 minutes.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <footer>
+
+        © 2026 StationHub. All Rights Reserved.
+
+    </footer>
+
+    <script src="./js/home.js"></script>
+
+</body>
+</html>
