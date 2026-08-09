@@ -1,29 +1,12 @@
-const jwt = require("jsonwebtoken");
+const errorHandler = (err, req, res, next) => {
 
-const auth = (req, res, next) => {
-    const authHeader = req.headers.authorization;
+    const statusCode = err.status || 500;
 
-    if (!authHeader || !authHeader.startsWith("Bearer ")) {
-        return res.status(401).json({
-            success: false,
-            message: "Unauthorized",
-        });
-    }
+    res.status(statusCode).json({
+        success: false,
+        message: err.message || "Internal Server Error",
+    });
 
-    const token = authHeader.split(" ")[1];
-
-    try {
-        const decoded = jwt.verify(token, process.env.JWT_SECRET);
-
-        req.user = decoded;
-
-        next();
-    } catch (err) {
-        return res.status(401).json({
-            success: false,
-            message: "Invalid token",
-        });
-    }
 };
 
-module.exports = auth;
+module.exports = errorHandler;

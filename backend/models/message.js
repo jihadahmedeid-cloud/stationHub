@@ -18,11 +18,6 @@ const messageSchema = new mongoose.Schema(
             type: String,
             maxlength: 300,
             default: ""
-        },
-        sender: {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: "Admin",
-            required: true
         }
     },
     {

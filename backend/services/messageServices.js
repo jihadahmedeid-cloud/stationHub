@@ -1,13 +1,23 @@
-const Message = require("../models/Message");
+const Message = require("../models/message");
+const Station = require("../models/station");
 
-const getMessages = async (query, stationId) => {
-
+const getMessages = async (query, stationName) => {
     const page = parseInt(query.page) || 1;
     const limit = parseInt(query.limit) || 10;
     const skip = (page - 1) * limit;
 
+    const station = await Station.findOne({
+        name: stationName.toLowerCase()
+    });
+
+    if (!station) {
+        const error = new Error("Station not found");
+        error.status = 404;
+        throw error;
+    }
+
     const filter = {
-        station: stationId
+        station: station._id
     };
 
     if (query.status) {
@@ -35,15 +45,22 @@ const getMessages = async (query, stationId) => {
 const createMessage = async ({
     station,
     status,
-    message,
-    sender
+    message
 }) => {
+    const stationData = await Station.findOne({
+        name: station.toLowerCase()
+    });
+
+    if (!stationData) {
+        const error = new Error("Station not found");
+        error.status = 404;
+        throw error;
+    }
 
     const newMessage = await Message.create({
-        station,
+        station: stationData._id,
         status,
-        message,
-        sender
+        message
     });
 
     return newMessage;

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>StationHub Socket Test</title>
+</head>
+
+<body>
+
+    <h1>StationHub Socket Test</h1>
+
+    <input id="stationInput" placeholder="Enter station name">
+
+    <button id="joinBtn">Join Station</button>
+
+    <h2>Current Station:</h2>
+    <p id="currentStation">None</p>
+
+    <h2>Viewers:</h2>
+    <p id="viewers">0</p>
+
+    <h2>Events:</h2>
+    <pre id="events"></pre>
+
+
+    <script src="/socket.io/socket.io.js"></script>
+
+    <script>
+        const socket = io();
+
+        const stationInput = document.getElementById("stationInput");
+        const joinBtn = document.getElementById("joinBtn");
+
+        const currentStation = document.getElementById("currentStation");
+        const viewers = document.getElementById("viewers");
+        const events = document.getElementById("events");
+
+
+        function log(message) {
+            events.textContent += message + "\n";
+        }
+
+
+        socket.on("connect", () => {
+            log("Connected: " + socket.id);
+        });
+
+
+        joinBtn.addEventListener("click", () => {
+
+            const station = stationInput.value.trim();
+
+            if (!station) {
+                alert("Enter station name");
+                return;
+            }
+
+            socket.emit("joinStation", station);
+
+            currentStation.textContent = station;
+
+            log("Joined: " + station);
+        });
+
+
+        socket.on("presenceUpdate", (data) => {
+
+            console.log("presenceUpdate:", data);
+
+            viewers.textContent = data.count;
+
+            log(
+                "Station: " +
+                data.stationId +
+                " | Viewers: " +
+                data.count
+            );
+        });
+
+
+        socket.on("newMessage", (data) => {
+
+            console.log("newMessage:", data);
+
+            log(
+                "NEW MESSAGE: " +
+                data.message
+            );
+        });
+
+
+        socket.on("disconnect", () => {
+            log("Disconnected");
+        });
+    </script>
+
+</body>
+</html>

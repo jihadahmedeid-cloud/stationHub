@@ -3,7 +3,7 @@ const router = express.Router();
 
 const { body } = require("express-validator");
 
-const auth = require("../middleware/auth");
+const requireAdmin = require("../middleware/requireAdmin");
 
 const {
     getAllMessages,
@@ -20,11 +20,11 @@ const messageValidator = [
         .withMessage("Message is required"),
 ];
 
-router.get("/:stationId/messages", getAllMessages);
+router.get("/:station/updates", getAllMessages);
 
 router.post(
-    "/:stationId/messages",
-    auth,
+    "/:station/updates",
+    requireAdmin,
     messageValidator,
     postMessage
 );

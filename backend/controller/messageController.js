@@ -4,13 +4,13 @@ const { getIO } = require("../sockets/socket");
 
 const getAllMessages = async (req, res, next) => {
     try {
-        const { stationId } = req.params;
+        const { station } = req.params;
 
-        const messages = await getMessages(req.query, stationId);
+        const messages = await getMessages(req.query, station);
 
         res.status(200).json({
             success: true,
-            ...messages,
+            ...messages
         });
 
     } catch (err) {
@@ -20,36 +20,31 @@ const getAllMessages = async (req, res, next) => {
 
 const postMessage = async (req, res, next) => {
     try {
-        const error = validationResult(req);
+        const errors = validationResult(req);
 
-        if (!error.isEmpty()) {
+        if (!errors.isEmpty()) {
             return res.status(422).json({
                 success: false,
-                errors: error.array(),
+                errors: errors.array()
             });
         }
 
-        const { stationId } = req.params;
+        const { station } = req.params;
+        const { status, message } = req.body;
 
-        const {
+        const newMessage = await createMessage({
+            station,
             status,
-            message,
-        } = req.body;
-
-        const sender = req.user.id;
- 
-        const update = await createMessage({
-            station: stationId,
-            status,
-            message,
-            sender,
+            message
         });
 
-        getIO().to(station).emit("newMessage", update);
+        getIO()
+            .to(station.toLowerCase())
+            .emit("newMessage", newMessage);
 
         res.status(201).json({
             success: true,
-            data: update,
+            data: newMessage
         });
 
     } catch (err) {
@@ -59,5 +54,5 @@ const postMessage = async (req, res, next) => {
 
 module.exports = {
     getAllMessages,
-    postMessage,
+    postMessage
 };
