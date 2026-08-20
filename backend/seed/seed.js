@@ -10,27 +10,39 @@ const Message = require("../models/message");
 const stations = [
     {
         name: "ramses",
-        status: "online"
+        status: "online",
+        line: "line1",
+        order: 1
     },
     {
         name: "sadat",
-        status: "offline"
+        status: "offline",
+        line: "line1",
+        order: 2
     },
     {
         name: "attaba",
-        status: "online"
+        status: "online",
+        line: "line2",
+        order: 1
     },
     {
         name: "helwan",
-        status: "offline"
+        status: "offline",
+        line: "line1",
+        order: 3
     },
     {
         name: "giza",
-        status: "online"
+        status: "online",
+        line: "line2",
+        order: 2
     },
     {
         name: "dokki",
-        status: "online"
+        status: "online",
+        line: "line2",
+        order: 3
     }
 ];
 

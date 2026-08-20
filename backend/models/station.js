@@ -7,11 +7,22 @@ const stationSchema = new mongoose.Schema(
             required: true,
             unique: true
         },
+
         status: {
             type: String,
             enum: ["online", "offline"],
             default: "online"
         },
+
+        line: {
+            type: String,
+            required: true
+        },
+
+        order: {
+            type: Number,
+            required: true
+        }
     },
     {
         timestamps: true

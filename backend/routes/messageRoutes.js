@@ -12,13 +12,15 @@ const {
 
 const messageValidator = [
     body("status")
-        .notEmpty()
-        .withMessage("Status is required"),
+        .isIn(["info", "warning"])
+        .withMessage("Status must be info or warning"),
 
     body("message")
+        .trim()
         .notEmpty()
         .withMessage("Message is required"),
 ];
+
 
 router.get("/:station/updates", getAllMessages);
 

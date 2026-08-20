@@ -13,7 +13,7 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
-app.use(express.static(path.join(__dirname, "public")));
+
 
 
 
@@ -23,6 +23,13 @@ app.get("/", (req, res) => {
         message: "StationHub API is running",
     });
 });
+
+app.get("/health", (req, res) => {
+    res.json({
+        status: "ok"
+    });
+});
+
 
 app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1/stations", stationRoutes);
